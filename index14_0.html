@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+   <!-- Required meta tags -->
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+   <title>JScript_14_events</title>
+
+   <script>
+	var count = 0;
+	function prn(text){
+		document.write(text);
+	}
+
+	function mouseov(el) {
+		var str = "Сюда навели мышкой " + ++count + " раз";
+		el.innerHTML = str;
+	}
+	
+	function start() {
+		prn("<br/>Function is started!<br/>");
+		var arr = [];
+		var k = -5;
+		for (var i = 0; i<3; i++){
+			arr[i] = [];
+			for (var j = 0; j < 3; j++)
+				arr[i][j] = k++;
+		}
+		alert (k);
+		printab(arr);
+	}
+	function startsum() {
+		prn("<br/>Function Sum is started!<br/>");
+		var arr = [];
+		var k = -31;
+		var summ;
+		for (var i = 0; i<100; i++) 
+			arr[i] = k++;
+		summ = sum(arr);
+		alert ("Summ of the array is: " + summ);
+		
+	}
+	
+   </script>
+  </head>
+  <body>
+	<input type="button" value="Start" onClick="start();">
+	<input type="button" value="Start Sum" onClick="startsum();">
+   
+   <br>
+   <span id="span1" style="cursor:pointer;" onmouseover="mouseov(this);">Сюда навели мышкой 0 раз</span>
+   
+   
+   
+
+  </body>
+</html>

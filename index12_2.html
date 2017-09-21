@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+   <!-- Required meta tags -->
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+   <title>JScript_12_functions</title>
+
+   <script>
+	function prn(text){
+		document.write(text);
+	}
+	function printab(arr){
+		if (arr.length == 0) return false;// если массив нулевой - сразу выходим.
+		var maxtd = 0;
+		for (var i = 0; i < arr.length; i++){
+			if (arr[i].length > maxtd) maxtd = arr[i].length;//получаем ширину таблицы
+		}
+		prn("<table>");
+		for (var i = 0; i < arr.length; i++){//идём по строкам
+			prn("<tr>");//открываем строку
+			var j = 0;
+			for ( ; j < arr[i].length; j++) {//печатаем все, что есть в строке
+				prn("<td>" + arr[i][j] + "</td>");
+			}
+			if (j < arr[i].length) 
+				for ( ;j<maxtd; j++) //и если строка короткая - добиваем пустыми ячейками
+					prn("<td> </td>");
+			prn("</tr>");//закрываем строку
+		}
+		prn("</table>");
+	}
+	function sum(arr){
+		if (arr.length == 0) return false;
+		var sum = 0;
+		for (var i = 0; i< arr.length; i++)
+			sum += arr[i];
+		return sum;
+	}
+	
+	function start() {
+		prn("<br/>Function is started!<br/>");
+		var arr = [];
+		var k = -5;
+		for (var i = 0; i<3; i++){
+			arr[i] = [];
+			for (var j = 0; j < 3; j++)
+				arr[i][j] = k++;
+		}
+		alert (k);
+		printab(arr);
+	}
+	function startsum() {
+		prn("<br/>Function Sum is started!<br/>");
+		var arr = [];
+		var k = -31;
+		var summ;
+		for (var i = 0; i<100; i++) 
+			arr[i] = k++;
+		summ = sum(arr);
+		alert ("Summ of the array is: " + summ);
+		
+	}
+	
+   </script>
+  </head>
+  <body>
+	<input type="button" value="Start" onClick="start();">
+	<input type="button" value="Start Sum" onClick="startsum();">
+   
+   
+   
+   
+
+  </body>
+</html>

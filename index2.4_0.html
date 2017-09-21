@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+   <!-- Required meta tags -->
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+   <title>JScript_14_events</title>
+
+   <script>
+	var count = false;
+	function prn(text){
+		document.write(text);
+	}
+
+	function mtoggle(el) {
+		if (!count) 
+			el.setAttribute("width","500px");
+		else 
+			el.setAttribute("width","100px");
+		count = !count;
+	
+	}
+   </script>
+  </head>
+  <body>
+
+	<img src="img/11.jpg" alt="car image" width="100px" onclick="mtoggle(this);" >
+   
+
+  </body>
+</html>

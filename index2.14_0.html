@@ -4,25 +4,40 @@
    <!-- Required meta tags -->
    <meta charset="utf-8">
    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-   <title>JScript_14_events</title>
+   <title>JQuery_2.14_events</title>
 
    <script type="text/javascript" src="js/jquery.js"></script>
    <script type="text/javascript">
 	var count = false;
+	var width = 0;
+	var height = 200;
+	var rr = -1;
+	var gg = 127;
+	var bb = 255;
 	function prn(text){
 		document.write(text);
 	}
 
 	function hideImg() {
-		$('img').hide();
-	
+		$('img').fadeOut(1000);
+		$('#div1').css('height' , height + 'px');
+		wid();
+	}
+	function wid(){
+		rr += 2;
+		gg -= 1;
+		width += 8;
+		$('#div1').css('background','rgb(' + rr +',' + gg + ',' + bb +')');
+		$('#div1').css('width',width + 'px');
+		
+		if (width < 800) setTimeout('wid()',10);
 	}
    </script>
   </head>
   <body>
 
 	<img id="im1" src="img/11.jpg" alt="car image" width="300px" onclick="hideImg();" >
-   
+   <div id="div1"></div>
 
   </body>
 </html>

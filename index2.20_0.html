@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+   <!-- Required meta tags -->
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+   <title>JQuery_2.14_events</title>
+
+   <script type="text/javascript" src="js/jquery.js"></script>
+   <script type="text/javascript">
+	var count = false;
+	var width = 0;
+	var height = 200;
+	var rr = -1;
+	var gg = 127;
+	var bb = 255;
+	var el;
+	var el2;
+	function prn(text){
+		document.write(text);
+	}
+
+	function hideImg() {
+		el = $('img').clone();
+		el2 = $('img').clone();
+		$('img').fadeOut(1000);
+		$('#div1').css('height' , height + 'px');
+		$('#div1').css('width','800px');
+		wid();
+	}
+	function wid(){
+		rr += 2;
+		gg -= 1;
+		width += 8;
+		$('#div1').css('background','linear-gradient(90deg, #00f 0%, #77a '+ width +'px, #fff 100%)');
+		
+		
+		if (width < 800) setTimeout('wid()',10);
+		else clon();
+	}
+	function clon() {
+		$(el).css('width','100px');
+		$(el).css('box-shadow','3px 3px 3px 3px #000');
+		$('body').append(el);
+		$(el2).css('width','200px');
+
+		$(el2).css('box-shadow','3px 3px 3px 3px #f00');
+		$(el2).appendTo('div');
+		//$(el2).append('div');
+		$('<p>Новый абзац</p>').appendTo('div');
+		$('<p>Суперновый кусок текста</p>').prependTo('div');
+		expandiv();
+	}
+	function expandiv(){
+		height +=3;
+		if (height<250) setTimeout('expandiv()',50);
+		$('div').css('height',height + 'px');
+	}
+	function showVal(){
+		var valinp = $("#t").val();
+		alert (valinp);
+	}
+   </script>
+  </head>
+  <body>
+
+	<img id="im1" src="img/11.jpg" alt="car image" width="300px" onclick="hideImg();" >
+   <div id="div1"></div>
+   <input type="text" id="t" >
+   <input type="button" onclick="showVal();">
+
+  </body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+   <!-- Required meta tags -->
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+   <title>JQuery_2.22_events</title>
+
+   <script type="text/javascript" src="js/jquery.js"></script>
+
+  </head>
+  <body>
+
+	<p>А тут пишите комментарии:</p>
+	<span id="addcom"  style="cursor:pointer;text-decoration:underline;color:#00f;">Добавить комментарий</span>
+	<form name="comment" method="post" action="javascript:void(event);" style="display:none">
+		<textarea style="width:200px;height:80px;box-shadow:3px 3px 3px 3px #999;"></textarea><br>
+		<input type="submit" value="Отправить комментарий" >
+	</form>
+
+	<script type="text/javascript">
+		var xcomm = 0;
+		var tx = "";
+		$(document).ready(function(){
+			//$('#addcom').css("color","#f00");
+			$('#addcom').bind("click",addComment);
+			$('input[type=submit]').bind("click",sendComment);
+		});
+		
+		
+		
+		function addComment(event){
+			$('#addcom').replaceWith($('form'));
+			$('form').css("display","block");
+			return false;
+		}
+		function sendComment(event){
+			tx = $('textarea').val();
+			$('body').append($('<div id="comm">' + tx + '</div>'));
+			$('#comm').css({"position":"relative","color":"#aaa"});
+			movcomm();
+		}
+		
+		function movcomm() {
+			xcomm +=2;
+			$('#comm').css("left", xcomm + "px");
+			if (xcomm>40) xcomm +=3;
+			if (xcomm>150) xcomm +=5;
+			if (xcomm < 1000) setTimeout("movcomm()",10);
+			else {
+				$('textarea').val("");
+				var clonCom = $('p:first').clone();
+				$(clonCom).text(tx);
+				$(clonCom).appendTo('p:last');
+				$('div#comm').remove();
+				xcomm = 0;
+			}
+		}
+		
+	</script>
+  </body>
+</html>

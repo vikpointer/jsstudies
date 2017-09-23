@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+   <title>Ajax_3.3_Работа с сервером через jQuery</title>
+
+   <script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript">
+	</script>
+  </head>
+  <body>
+	<span id="sp1"> Контент 1 </span>
+	<span id="sp2"> Контент 2 </span>
+	
+	
+	<script type="text/javascript">
+		function showEl(data){
+			var el = $("#content");
+			if (el.length ==0) $("<p id='content'>" + data + "</p>").appendTo($('body'));
+			else $("#content").html(data);
+		}
+		
+		$(document).ready(function(){
+			$('#sp1').bind("click",function(){
+				$.get("s_3_3.php", {id: 1}, showEl);
+			});
+			$('#sp2').bind("click",function(){
+				$.post("s_3_3.php", {id: 2}, showEl);
+			});
+		});
+		
+	</script>
+  </body>
+</html>

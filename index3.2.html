@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+   <title>Ajax_3.2_Работа с сервером</title>
+
+   <script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript">
+		function getXmlHttp() {
+			var xmlhttp;
+			try {
+				xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
+			} catch (e) {
+				try {
+					xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+				} catch (E) {
+					xmlhttp = false;
+				}
+			}
+			if (!xmlhttp && typeof XMLHttpRequest != "undefined")
+				xmlhttp = new XMLHttpRequest();
+			return xmlhttp;
+	
+		}
+		
+		
+	</script>
+  </head>
+  <body>
+	<input type="text" name="login" onblur="checkLogin(this.value);">
+	
+	<script type="text/javascript">
+		var xcomm = 0;
+		var tx = "";
+		$(document).ready(function(){
+			
+		});
+		
+		function checkLogin(login) {
+			var xmlhttp = getXmlHttp();// Создаём объект XmlHttp
+			xmlhttp.open("POST","s_3_2.php", true); // Открываем соединение POST, 
+													// адрес назначения (файл) s_3_2.php,
+													// соединение асинхронное (true)
+			xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");// Отправляем кодировку
+			//xmlhttp.send("login=" + encodeURIComponent(login) + "&name=" + encodeURIComponent(name));
+			xmlhttp.send("login=" + encodeURIComponent(login));// Отправлляем POST-запрос
+			xmlhttp.onreadystatechange = function() {// Ждём ответа от сервера
+				if (xmlhttp.readyState == 4) {// Ответ пришёл
+					if (xmlhttp.status == 200)// Сервер вернул код 200 (что хорошо)
+						if (xmlhttp.responseText == "error") {
+							alert ("Логин занят");
+							$('input[name="login"]').val('');
+						}
+						else alert ("Логин свободен");
+					}
+			}
+		}
+		
+	</script>
+  </body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+   <title>My Plugin</title>
+
+   <script type="text/javascript" src="js/jquery.js"></script>
+   <script type="text/javascript" src="js/my.js"></script>
+	<script type="text/javascript">
+
+	</script>
+  </head>
+  <body>
+	<div class="c_1">Блок 1</div>
+	<br>
+	<div class="c_1">Блок 2</div>
+	<br>
+	<div class="c_2">Блок 3</div>
+	<br>
+	<div class="c_3">Блок 4</div>
+	<br>
+	<script type="text/javascript">
+		$('.c_1').myExt();
+		$('.c_2').myExt({
+			baseColor: "#00f",
+			hoverColor: "#f0f"
+		});
+		$('.c_3').myExt({
+			widthLine: "3px",
+			baseColor: "#666",
+			hoverColor: "#333"
+		});
+	</script>
+  </body>
+</html>
